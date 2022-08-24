@@ -11,7 +11,7 @@ import { DateFormControl } from '../../class/date-form-control';
 export class CardFormComponent implements OnInit {
   cardForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    cardNumber: new DateFormControl('', [
+    cardNumber: new FormControl('', [
       Validators.required,
       Validators.minLength(16),
       Validators.maxLength(16),
@@ -20,7 +20,7 @@ export class CardFormComponent implements OnInit {
       Validators.required,
       Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/),
     ]),
-    securityCode: new DateFormControl('', [
+    securityCode: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(3),
@@ -35,5 +35,9 @@ export class CardFormComponent implements OnInit {
 
   onSubmit(): void {
     console.warn('submitted');
+  }
+
+  onResetClick(): void {
+    this.cardForm.reset();
   }
 }
